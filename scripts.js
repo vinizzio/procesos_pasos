@@ -31,12 +31,22 @@ prevButton.addEventListener('click', () => {
 });
 
 // Show popup
-function showPopup() {
+function showPopup1() {
   popup.style.display = 'block';
 }
 
 // Close popup
-function closePopup() {
+function closePopup1() {
+  popup.style.display = 'none';
+}
+
+// Show popup
+function showPopup2() {
+  popup.style.display = 'block';
+}
+
+// Close popup
+function closePopup2() {
   popup.style.display = 'none';
 }
 

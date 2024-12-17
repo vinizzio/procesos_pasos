@@ -14,11 +14,11 @@
       <div class="step">2. Recibir la documentación de Compras Públicas.</div>
       <div class="step">3. Revisar los productos entregables, contactar al proveedor, solicitar capacitaciones (si es el caso), verificar los tiempos de entrega, verificar que cumplan con los TDR y formas de pago.</div>
       <div class="step">3.1 Contactar al proveedor y solicitar reuniones, toda solicitud es por escrito correo o quipux y guardar todas las actas ya sea de cursos o reuniones técnicas.</div>
-      <div class="step">4. Solicitar una comisión técnica de entrega recepción (preguntar al director) y solicitar por medio de Quipux al Sr. Alcalde. (cuando son montos mínimos no es necesario). <a href="formato_solicitud_comision_tecnica.pdf" download>Descargar formato</a> <span class="icon" onclick="showPopup()">📎 Archivos adjuntos</span></div>
+      <div class="step">4. Solicitar una comisión técnica de entrega recepción (preguntar al director) y solicitar por medio de Quipux al Sr. Alcalde. (cuando son montos mínimos no es necesario). <a href="formato_solicitud_comision_tecnica.pdf" download>Descargar formato</a> <span class="icon" id="popup1" onclick="showPopup1()">📎 Archivos adjuntos</span></div>
       <div class="step">4.0 Pedir al proveedor que solicite hora y fecha para la entrega por escrito.</div>
       <div class="step">4.1 Enviar un Quipux a bodegas notificando qué día y hora van a entregar si es un bien</div>
       <div class="step">4.2 Imprimir una copia de toda la documentación para recibir en bodegas si es un bien.</div>
-      <div class="step">5. Informe del administrador. <a href="formato_solicitud_comision_tecnica.pdf" download>Descargar formato</a> <span class="icon" onclick="showPopup()">📎 Archivos adjuntos</span></div></div>
+      <div class="step">5. Informe del administrador. <a href="formato_solicitud_comision_tecnica.pdf" download>Descargar formato</a> <span class="icon" id="popup2" onclick="showPopup2()">📎 Archivos adjuntos</span></div>
       <div class="step">6. Informe de la comisión técnica.</div>
       <div class="step">7. Acta de entrega-recepción.</div>
       <div class="step">9. Quipux: Envío de información. Solicitud de ingreso de documentación de contrato de compra SIE-GADMC-L-2023-031.</div>
@@ -32,11 +32,20 @@
   </div>
 
   <div class="popup" id="popup">
-    <img src="comision_tecnica_formato.png" alt="Formato de solicitud de comisión técnica">
+    <img src="no_adjuntos.jpg" alt="">
     <div class="popup-close">
-      <button onclick="closePopup()">Cerrar</button>
+      <button onclick="closePopup1()">Cerrar</button>
     </div>
   </div>
+
+  <div class="popup" id="popup">
+    <img src="acta.jpg" alt="">
+    <div class="popup-close">
+      <button onclick="closePopup2()">Cerrar</button>
+    </div>
+  </div>
+
+  
 
   <script src="scripts.js"></script>
 </body>
