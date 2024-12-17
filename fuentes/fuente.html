@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasos para el Pago</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background-color: #007BFF;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .buttons button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .icon {
+      display: inline-block;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      z-index: 1000;
+      border-radius: 8px;
+    }
+
+    .popup img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .popup-close {
+      display: block;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .popup-close button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Pasos para el Pago</div>
+    <div class="content">
+      <div class="step active">1. Recibir la notificación del administrativo.</div>
+      <div class="step">2. Recibir la documentación de compras.</div>
+      <div class="step">3. Revisar los productos entregables, contactar al proveedor, pedir capacitaciones (si es el caso), tiempos de entrega (bienes) y que cumplan con los TDR y formas de pago.</div>
+      <div class="step">3.1 Contactar al proveedor y solicitar reuniones, todo por escrito y guardar las actas ya sea de cursos o reuniones técnicas.</div>
+      <div class="step">4. Solicitar una comisión técnica de entrega (preguntar al director quiénes van) por medio de Quipux al Sr. Alcalde. Ejemplo: GADCL-DTICS-2023-0005-O (montos mínimos no van). <a href="formato_solicitud_comision_tecnica.pdf" download>Descargar formato</a> <span class="icon" onclick="showPopup()">📎archivos adjuntos</span></div>
+      <div class="step">4.0 Pedir al proveedor que solicite hora y fecha para la entrega por escrito.</div>
+      <div class="step">4.1 Imprimir copia de todo para bodegas.</div>
+      <div class="step">4.2 Enviar Quipux a bodegas notificando qué día y hora van a entregar.</div>
+      <div class="step">5. Informe del administrador.</div>
+      <div class="step">6. Informe de la comisión técnica.</div>
+      <div class="step">7. Acta de entrega-recepción.</div>
+      <div class="step">9. Quipux: Envío de información. Solicitud de ingreso de documentación de contrato de compra SIE-GADMC-L-2023-031.</div>
+      <div class="step">10. Entregar todo impreso a la secretaría para firma física.</div>
+      <div class="step">11. Convalidación: Imprimir Quipux y entregar al financiero.</div>
+      <div class="buttons">
+        <button id="prev" disabled>Anterior</button>
+        <button id="next">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <img src="comision_tecnica_formato.png" alt="Formato de solicitud de comisión técnica">
+    <div class="popup-close">
+      <button onclick="closePopup()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll('.step');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    const popup = document.getElementById('popup');
+    let currentStep = 0;
+
+    function updateSteps() {
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index === currentStep);
+      });
+
+      prevButton.disabled = currentStep === 0;
+      nextButton.disabled = currentStep === steps.length - 1;
+    }
+
+    function showPopup() {
+      popup.style.display = 'block';
+    }
+
+    function closePopup() {
+      popup.style.display = 'none';
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateSteps();
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateSteps();
+      }
+    });
+  </script>
+</body>
+</html>
